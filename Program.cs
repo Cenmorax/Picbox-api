@@ -22,8 +22,15 @@ app.MapGet("/api/test", () => new { message = "This is a test endpoint", status 
 
 app.MapGet("/api/db-test", () => async (AppDbContext db) =>
 {
-    var canConnect = await db.Database.CanConnectAsync();
-    return new { databaseConnected = canConnect };
+    try
+    {
+        var canConnect = await db.Database.CanConnectAsync();
+        return Results.Ok(new { databaseConnected = canConnect });
+    }
+    catch (Exception ex)
+    {
+        return Results.Ok(new { databaseConnected = false, error = ex.Message });
+    }
 });
 
 app.Run();
