@@ -24,25 +24,28 @@ app.MapGet("/api/db-test", async (AppDbContext db, IConfiguration config) =>
 {
     try
     {
-        var connectionString = config.GetConnectionString("DefaultConnection");
-        var canConnect = await db.Database.CanConnectAsync();
+        // Try to open a connection explicitly to get the real error
+        await db.Database.OpenConnectionAsync();
+        await db.Database.CloseConnectionAsync();
+
         return Results.Ok(new
         {
-            databaseConnected = canConnect,
-            message = "Connection successful!"
+            success = true,
+            message = "Database connected successfully!"
         });
     }
     catch (Exception ex)
     {
         return Results.Ok(new
         {
-            databaseConnected = false,
+            success = false,
             error = ex.Message,
             innerError = ex.InnerException?.Message,
-            stackTrace = ex.StackTrace?.Substring(0, Math.Min(500, ex.StackTrace.Length))
+            type = ex.GetType().Name
         });
     }
 });
+
 
 
 
