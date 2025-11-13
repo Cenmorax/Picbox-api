@@ -20,7 +20,7 @@ app.MapGet("/", () => "Hello from ASP.NET API on Render!");
 
 app.MapGet("/api/test", () => new { message = "This is a test endpoint", status = "success" });
 
-app.MapGet("/api/db-test", () => async (AppDbContext db) =>
+app.MapGet("/api/db-test", async (AppDbContext db) =>
 {
     try
     {
