@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PicboxApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+209ef4fbbb740edab08b7b917b47c7acb9b05905")]
 [assembly: System.Reflection.AssemblyProductAttribute("PicboxApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PicboxApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
